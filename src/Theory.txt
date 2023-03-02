@@ -1,0 +1,102 @@
+//The XMLHttpRequest object can be used to request data from a web server.
+
+// readyState	Holds the status of the XMLHttpRequest.
+// 0: request not initialized
+// 1: server connection established
+// 2: request received
+// 3: processing request
+// 4: request finished and response is ready
+
+
+// status	200: "OK"
+// 403: "Forbidden"
+// 404: "Page not found"
+// For a complete list go to the Http Messages Reference
+
+
+// statusText	Returns the status-text (e.g. "OK" or "Not Found")
+
+
+**************************************************************************************************
+1)AJAX
+
+
+<h1>AJAX</h1>
+<p>AJAX is not a programming language.</p>
+<p>AJAX is a technique for accessing web servers from a web page.</p>
+<p>AJAX stands for Asynchronous JavaScript And XML.</p>
+
+
+code:
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+
+*******************************************************************************
+2)Local Xml call(fetch()):--
+
+The Fetch API allows you to make network requests similar to XMLHttpRequest (XHR). 
+The main difference is that the Fetch API uses Promises,
+ which enables a simpler and cleaner API, avoiding callback hell and 
+ having to remember the complex API of XMLHttpRequest.
+
+
+ For making a request and fetching a resource, use the window.fetch method. 
+ The fetch() method takes one mandatory argument, the URL to the resource you want to fetch. 
+ It returns a promise that resolves to the Response to that request, whether it is successful or not.
+
+
+ **********************************************************************************
+
+ 3)Axois:
+
+
+ As with Fetch, Axios is promise-based. However, it provides a more powerful and flexible feature set.
+
+Advantages of using Axios over the native Fetch API include:
+
+Request and response interception
+Streamlined error handling
+Protection against XSRF
+Support for upload progress
+Response timeout
+The ability to cancel requests
+Support for older browsers
+Automatic JSON data transformation
+
+*******************************************************************************************
+
+4)not json type BUT XML type data,get that data 
+
+
+To call an XML response in React, you can use fetch or another 
+HTTP client library to make the request to the server and retrieve the XML data. 
+Then you can parse the response using a XML parser library such as xml2js or use the built-in DOMParser 
+object in JavaScript to parse the XML data into a JavaScript object.
+
+Here's an example using fetch and DOMParser
+
+Note that this is just one way to call and parse an XML response in React, and you may need to adjust the code to fit your specific use case.
+
+**************************************************************************************************
+
+5)not json type BUT XML type data,get that data ===>using axios
+
+This makes a GET request to the specified API URL with an Accept header set to application/xml to
+ indicate that the response should be in XML format. The response data is then available in the response 
+ object in the success callback of the then method.
+
+
+ Then you can use fetch() to retrieve the XML data and pass it to the xml2js.parseString() method to parse the XML and
+  convert it into a JavaScript object. You can then use the object to render the data in your React component.
+
+  Note that you'll need to replace 'your-xml-data-url' with the actual URL of your XML data. 
+  The JSON.stringify() method is used to convert the JavaScript object into a string for display purposes.

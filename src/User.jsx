@@ -78,15 +78,18 @@ export default function User() {
           },
         }
       );
+      //vidhi
+      // hjiukyguig;iughh;ohj testing in git
     } catch (error) {
       console.error("posterror", error);
     }
   };
 
   const updateData = async (id, data) => {
+    
     const builder = new Builder();
     const xmlStr = builder.buildObject(data);
-    try {
+    try {Builder
       const response = await axios.put(
         `http://127.0.0.1:8000/student/${id}/`,
         xmlStr,
